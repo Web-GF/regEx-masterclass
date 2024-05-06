@@ -5,6 +5,13 @@ const myPasswordElement = document.getElementById('password');
 const myUserEmailElement = document.getElementById('email');
 
 const submitButton = document.getElementById('submit');
+
+
+let  isPasswordValid = false;
+let  isUsernameValid = false;
+let isEmailValid = false;
+
+
 submitButton.disabled = true
 
 
@@ -15,7 +22,7 @@ myPasswordElement.addEventListener('keyup', () => {
   
   let passwordRegEx=/^[a-z\d]{4,12}$/i;
 
-  const isPasswordValid = passwordRegEx.test(password)
+   isPasswordValid = passwordRegEx.test(password)
 
   if (isPasswordValid) {
     myPasswordElement.style.border = '2px solid green';
@@ -24,6 +31,7 @@ myPasswordElement.addEventListener('keyup', () => {
     myPasswordElement.style.border = '2px solid orange';
     console.log('invalid');
   }
+  validateForm();
 })
 
 
@@ -33,7 +41,7 @@ myUserNameElement.addEventListener('keyup', () => {
 
   let usernameRegEx = /^[\w\d.-]{4,8}$/;
 
-  const isUsernameValid = usernameRegEx.test(username);
+   isUsernameValid = usernameRegEx.test(username);
 
   if (isUsernameValid) {
     myUserNameElement.style.border = '2px solid green';
@@ -44,6 +52,7 @@ myUserNameElement.addEventListener('keyup', () => {
     myUserNameElement.style.border = '2px solid orange';
     console.log('invalid username');
   }
+  validateForm();
 })
 
 myUserEmailElement.addEventListener('keyup', () => {
@@ -51,7 +60,7 @@ myUserEmailElement.addEventListener('keyup', () => {
     let email = myUserEmailElement.value;
   let emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-  const isEmailValid = emailRegEx.test(email);
+   isEmailValid = emailRegEx.test(email);
 
   if (isEmailValid) {
     myUserEmailElement.style.border = '2px solid green';
@@ -62,7 +71,27 @@ myUserEmailElement.addEventListener('keyup', () => {
     console.log('invalid email');
     
   }
+  validateForm();
 })
+
+
+
+
+submitButton.addEventListener('click', (event) => {
+event.preventDefault();
+console.log('Form submitted successfully!');
+})
+
+
+function validateForm(){
+  console.log(isPasswordValid, isUsernameValid, isEmailValid);
+  if (isPasswordValid && isUsernameValid && isEmailValid) {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+
+}
 
 
   
