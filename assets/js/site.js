@@ -19,8 +19,8 @@ submitButton.disabled = true
 myPasswordElement.addEventListener('keyup', () => {
 
   let password = myPasswordElement.value;
-
-  let passwordRegEx = /^[a-z\d]{2,6}$/i;
+  // hust at sætte range på jeres reg ex eks.{2,4} ellers virker ^ og $ ikke som start og end.. 
+  let passwordRegEx = /^[a-zA-Z0-9]{2,6}$/;
 
   isPasswordValid = passwordRegEx.test(password)
 
@@ -58,6 +58,11 @@ myUserNameElement.addEventListener('keyup', () => {
 myUserEmailElement.addEventListener('keyup', () => {
 
   let email = myUserEmailElement.value;
+
+  // første element tester for word characters - og . [\w-\.]
+  // anden element @ og en gruppe ([\w-]+\.) med en range med  word characters og .
+  // sidste element tester på word characters og længde mellem 2 og 4 i slutningen
+
   let emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   isEmailValid = emailRegEx.test(email);
@@ -78,6 +83,7 @@ myUserEmailElement.addEventListener('keyup', () => {
 
 
 submitButton.addEventListener('click', (event) => {
+  // husk prevent default for at stoppe reload fra form
   event.preventDefault();
   console.log('Form submitted successfully!');
 })
