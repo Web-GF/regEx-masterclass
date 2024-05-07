@@ -7,8 +7,8 @@ const myUserEmailElement = document.getElementById('email');
 const submitButton = document.getElementById('submit');
 
 
-let  isPasswordValid = false;
-let  isUsernameValid = false;
+let isPasswordValid = false;
+let isUsernameValid = false;
 let isEmailValid = false;
 
 
@@ -19,10 +19,10 @@ submitButton.disabled = true
 myPasswordElement.addEventListener('keyup', () => {
 
   let password = myPasswordElement.value;
-  
-  let passwordRegEx=/^[a-z\d]{4,12}$/i;
 
-   isPasswordValid = passwordRegEx.test(password)
+  let passwordRegEx = /^[a-z\d]{2,6}$/i;
+
+  isPasswordValid = passwordRegEx.test(password)
 
   if (isPasswordValid) {
     myPasswordElement.style.border = '2px solid green';
@@ -41,7 +41,7 @@ myUserNameElement.addEventListener('keyup', () => {
 
   let usernameRegEx = /^[\w\d.-]{4,8}$/;
 
-   isUsernameValid = usernameRegEx.test(username);
+  isUsernameValid = usernameRegEx.test(username);
 
   if (isUsernameValid) {
     myUserNameElement.style.border = '2px solid green';
@@ -57,10 +57,10 @@ myUserNameElement.addEventListener('keyup', () => {
 
 myUserEmailElement.addEventListener('keyup', () => {
 
-    let email = myUserEmailElement.value;
+  let email = myUserEmailElement.value;
   let emailRegEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-   isEmailValid = emailRegEx.test(email);
+  isEmailValid = emailRegEx.test(email);
 
   if (isEmailValid) {
     myUserEmailElement.style.border = '2px solid green';
@@ -69,7 +69,7 @@ myUserEmailElement.addEventListener('keyup', () => {
   } else {
     myUserEmailElement.style.border = '2px solid orange';
     console.log('invalid email');
-    
+
   }
   validateForm();
 })
@@ -78,12 +78,12 @@ myUserEmailElement.addEventListener('keyup', () => {
 
 
 submitButton.addEventListener('click', (event) => {
-event.preventDefault();
-console.log('Form submitted successfully!');
+  event.preventDefault();
+  console.log('Form submitted successfully!');
 })
 
 
-function validateForm(){
+function validateForm() {
   console.log(isPasswordValid, isUsernameValid, isEmailValid);
   if (isPasswordValid && isUsernameValid && isEmailValid) {
     submitButton.disabled = false;
@@ -94,5 +94,5 @@ function validateForm(){
 }
 
 
-  
- 
+
+
