@@ -14,6 +14,25 @@ let isEmailValid = false;
 
 submitButton.disabled = true
 
+myUserNameElement.addEventListener('keyup', () => {
+
+  let username = myUserNameElement.value;
+
+  let usernameRegEx = /^[a-zA-Z0-9]{2,20}$/;
+
+  isUsernameValid = usernameRegEx.test(username);
+
+  if (isUsernameValid) {
+    myUserNameElement.style.border = '2px solid green';
+    console.log('valid username');
+
+  }
+  else {
+    myUserNameElement.style.border = '2px solid orange';
+    console.log('invalid username');
+  }
+  validateForm();
+})
 
 
 myPasswordElement.addEventListener('keyup', () => {
@@ -35,25 +54,7 @@ myPasswordElement.addEventListener('keyup', () => {
 })
 
 
-myUserNameElement.addEventListener('keyup', () => {
 
-  let username = myUserNameElement.value;
-
-  let usernameRegEx = /^[\w\d.-]{4,8}$/;
-
-  isUsernameValid = usernameRegEx.test(username);
-
-  if (isUsernameValid) {
-    myUserNameElement.style.border = '2px solid green';
-    console.log('valid username');
-
-  }
-  else {
-    myUserNameElement.style.border = '2px solid orange';
-    console.log('invalid username');
-  }
-  validateForm();
-})
 
 myUserEmailElement.addEventListener('keyup', () => {
 
